@@ -1,13 +1,17 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1458011577,
-    'checksum' => 'c1e42d0ff9e211e0448dab05e8c516a9',
+    'timestamp' => 1458013616,
+    'checksum' => '8dbc938eeac038bfb2d5ceb1372daed6',
     'files' => [
         'user/config' => [
             'media' => [
                 'file' => 'user/config/media.yaml',
                 'modified' => 1458009783
+            ],
+            'plugins/view' => [
+                'file' => 'user/config/plugins/view.yaml',
+                'modified' => 1458013350
             ],
             'security' => [
                 'file' => 'user/config/security.yaml',
@@ -23,7 +27,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1458011577
+                'modified' => 1458013610
             ],
             'themes/afterburner2' => [
                 'file' => 'user/config/themes/afterburner2.yaml',
@@ -49,6 +53,10 @@ return [
             ]
         ],
         'user/plugins' => [
+            'plugins/view' => [
+                'file' => 'user/plugins/view/view.yaml',
+                'modified' => 1458013344
+            ],
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/admin.yaml',
                 'modified' => 1456413550
@@ -56,6 +64,10 @@ return [
             'plugins/login' => [
                 'file' => 'user/plugins/login/login.yaml',
                 'modified' => 1456413550
+            ],
+            'plugins/tidyhtml' => [
+                'file' => 'user/plugins/tidyhtml/tidyhtml.yaml',
+                'modified' => 1458013367
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/email.yaml',
@@ -68,6 +80,10 @@ return [
             'plugins/form' => [
                 'file' => 'user/plugins/form/form.yaml',
                 'modified' => 1456413550
+            ],
+            'plugins/embed' => [
+                'file' => 'user/plugins/embed/embed.yaml',
+                'modified' => 1458013467
             ],
             'plugins/aboutme' => [
                 'file' => 'user/plugins/aboutme/aboutme.yaml',
@@ -84,11 +100,18 @@ return [
             'plugins/assets' => [
                 'file' => 'user/plugins/assets/assets.yaml',
                 'modified' => 1458010329
+            ],
+            'plugins/textformatter' => [
+                'file' => 'user/plugins/textformatter/textformatter.yaml',
+                'modified' => 1458013438
             ]
         ]
     ],
     'data' => [
         'plugins' => [
+            'view' => [
+                'enabled' => true
+            ],
             'admin' => [
                 'enabled' => true,
                 'route' => '/admin',
@@ -199,6 +222,62 @@ return [
                     ]
                 ]
             ],
+            'tidyhtml' => [
+                'enabled' => true,
+                'hide_comments' => true,
+                'indent' => true,
+                'wrap' => 0,
+                'indent_spaces' => 4,
+                'blocklevel_tags' => [
+                    0 => 'article',
+                    1 => 'header',
+                    2 => 'aside',
+                    3 => 'audio',
+                    4 => 'bdi',
+                    5 => 'canvas',
+                    6 => 'details',
+                    7 => 'dialog',
+                    8 => 'figcaption',
+                    9 => 'figure',
+                    10 => 'footer',
+                    11 => 'hgroup',
+                    12 => 'main',
+                    13 => 'menu',
+                    14 => 'menuitem',
+                    15 => 'nav',
+                    16 => 'section',
+                    17 => 'source',
+                    18 => 'summary',
+                    19 => 'template',
+                    20 => 'track',
+                    21 => 'video'
+                ],
+                'empty_tags' => [
+                    0 => 'command',
+                    1 => 'embed',
+                    2 => 'keygen',
+                    3 => 'source',
+                    4 => 'track',
+                    5 => 'wbr'
+                ],
+                'inline_tags' => [
+                    0 => 'audio',
+                    1 => 'command',
+                    2 => 'datalist',
+                    3 => 'embed',
+                    4 => 'keygen',
+                    5 => 'mark',
+                    6 => 'menuitem',
+                    7 => 'meter',
+                    8 => 'output',
+                    9 => 'progress',
+                    10 => 'source',
+                    11 => 'time',
+                    12 => 'video',
+                    13 => 'wbr',
+                    14 => 'data'
+                ]
+            ],
             'email' => [
                 'enabled' => true,
                 'from' => NULL,
@@ -234,6 +313,12 @@ return [
                     'accept' => [
                         0 => 'image/*'
                     ]
+                ]
+            ],
+            'embed' => [
+                'enabled' => true,
+                'oembed' => [
+                    'endpoint' => 'http://open.iframe.ly/api/oembed'
                 ]
             ],
             'aboutme' => [
@@ -298,6 +383,137 @@ return [
             ],
             'assets' => [
                 'enabled' => true
+            ],
+            'textformatter' => [
+                'enabled' => true,
+                'process' => false,
+                'autoemail' => true,
+                'autoimage' => true,
+                'autolink' => [
+                    'enabled' => true,
+                    'www' => false,
+                    'schemes' => [
+                        0 => 'http',
+                        1 => 'https'
+                    ]
+                ],
+                'bbcodes' => [
+                    'enabled' => true,
+                    'bbcodes' => [
+                        0 => 'b',
+                        1 => 'c',
+                        2 => 'center',
+                        3 => 'code',
+                        4 => 'color',
+                        5 => 'email',
+                        6 => 'float',
+                        7 => 'hr',
+                        8 => 'i',
+                        9 => 'img',
+                        10 => 'list',
+                        11 => '*',
+                        12 => 'quote',
+                        13 => 's',
+                        14 => 'size',
+                        15 => 'spoiler',
+                        16 => 'u',
+                        17 => 'url'
+                    ],
+                    'custom' => NULL
+                ],
+                'censor' => [
+                    'enabled' => true,
+                    'words' => NULL
+                ],
+                'emoji' => '',
+                'emoticons' => [
+                    'enabled' => true,
+                    'path' => '',
+                    'icons' => NULL
+                ],
+                'escaper' => [
+                    'enabled' => true,
+                    'escape_all' => false,
+                    'regex' => ''
+                ],
+                'fancypants' => true,
+                'html' => [
+                    'comments' => true,
+                    'entities' => true,
+                    'elements' => [
+                        'enabled' => true,
+                        'allowed' => [
+                            'safe' => [
+                                'a' => 'href, *title',
+                                'abbr' => '*title',
+                                'b' => '',
+                                'br' => '',
+                                'code' => '',
+                                'dd' => '',
+                                'del' => '',
+                                'div' => '*class',
+                                'dl' => '',
+                                'dt' => '',
+                                'i' => '',
+                                'img' => 'src, *alt, *height, *title, *width',
+                                'ins' => '',
+                                'li' => '',
+                                'ol' => '',
+                                'pre' => '',
+                                'rb' => '',
+                                'rp' => '',
+                                'rt' => '',
+                                'rtc' => '',
+                                'ruby' => '',
+                                'span' => '*class',
+                                'strong' => '',
+                                'sub' => '',
+                                'sup' => '',
+                                'table' => '',
+                                'tbody' => '',
+                                'td' => '*colspan, *rowspan',
+                                'tfoot' => '',
+                                'th' => '*colspan, *rowspan, *scope',
+                                'thead' => '',
+                                'tr' => '',
+                                'u' => '',
+                                'ul' => ''
+                            ],
+                            'unsafe' => NULL
+                        ]
+                    ]
+                ],
+                'keywords' => [
+                    'enabled' => true,
+                    'case_sensitive' => true,
+                    'template' => '',
+                    'keywords' => NULL
+                ],
+                'mediaembed' => [
+                    'enabled' => true,
+                    'create_individiual_bbcodes' => true,
+                    'sites' => [
+                        0 => 'dailymotion',
+                        1 => 'facebook',
+                        2 => 'flickr',
+                        3 => 'imgur',
+                        4 => 'instagram',
+                        5 => 'slideshare',
+                        6 => 'soundcloud',
+                        7 => 'spotify',
+                        8 => 'tumblr',
+                        9 => 'twitch',
+                        10 => 'twitter',
+                        11 => 'vimeo',
+                        12 => 'vine',
+                        13 => 'youtube'
+                    ]
+                ],
+                'preg' => [
+                    'enabled' => true,
+                    'replace' => NULL,
+                    'match' => NULL
+                ]
             ]
         ],
         'media' => [

@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1458011340,
-    'checksum' => 'bb6b27fd48f1ecd83be86b65b38457b1',
+    'timestamp' => 1458013616,
+    'checksum' => '3238aa68aad39ea952b357c78d6165ad',
     'files' => [
         'system/blueprints/config' => [
             'media' => [
@@ -23,6 +23,10 @@ return [
             ]
         ],
         'user/plugins' => [
+            'plugins/view' => [
+                'file' => 'user/plugins/view/blueprints.yaml',
+                'modified' => 1458013344
+            ],
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/blueprints.yaml',
                 'modified' => 1456413550
@@ -30,6 +34,10 @@ return [
             'plugins/login' => [
                 'file' => 'user/plugins/login/blueprints.yaml',
                 'modified' => 1456413550
+            ],
+            'plugins/tidyhtml' => [
+                'file' => 'user/plugins/tidyhtml/blueprints.yaml',
+                'modified' => 1458013367
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/blueprints.yaml',
@@ -42,6 +50,10 @@ return [
             'plugins/form' => [
                 'file' => 'user/plugins/form/blueprints.yaml',
                 'modified' => 1456413550
+            ],
+            'plugins/embed' => [
+                'file' => 'user/plugins/embed/blueprints.yaml',
+                'modified' => 1458013467
             ],
             'plugins/aboutme' => [
                 'file' => 'user/plugins/aboutme/blueprints.yaml',
@@ -58,6 +70,10 @@ return [
             'plugins/assets' => [
                 'file' => 'user/plugins/assets/blueprints.yaml',
                 'modified' => 1458010329
+            ],
+            'plugins/textformatter' => [
+                'file' => 'user/plugins/textformatter/blueprints.yaml',
+                'modified' => 1458013438
             ]
         ]
     ],
@@ -66,6 +82,17 @@ return [
             'plugins' => [
                 'type' => '_parent',
                 'name' => 'plugins'
+            ],
+            'plugins.view' => [
+                'type' => '_parent',
+                'name' => 'plugins.view'
+            ],
+            'plugins.view.template' => [
+                'type' => 'text',
+                'label' => 'Default Modular Template',
+                'placeholder' => 'eg: partials/view',
+                'help' => 'Specify a default template to use display view collection',
+                'name' => 'plugins.view.template'
             ],
             'plugins.admin' => [
                 'type' => '_parent',
@@ -711,6 +738,156 @@ return [
                 ],
                 'name' => 'plugins.login.oauth.providers.Twitter.credentials.secret'
             ],
+            'plugins.tidyhtml' => [
+                'type' => '_parent',
+                'name' => 'plugins.tidyhtml'
+            ],
+            'plugins.tidyhtml.basic_section' => [
+                'type' => 'section',
+                'title' => 'Basic configurtion',
+                'underline' => false,
+                'name' => 'plugins.tidyhtml.basic_section'
+            ],
+            'plugins.tidyhtml.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin status',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tidyhtml.enabled'
+            ],
+            'plugins.tidyhtml.indent' => [
+                'type' => 'toggle',
+                'label' => 'Ident rendered HTML code',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tidyhtml.indent'
+            ],
+            'plugins.tidyhtml.wrap' => [
+                'type' => 'text',
+                'label' => 'Line-wrap (0 = no wrapping, 68 = standard)',
+                'default' => 0,
+                'size' => 'x-small',
+                'validate' => [
+                    'type' => 'int',
+                    'min' => 1
+                ],
+                'name' => 'plugins.tidyhtml.wrap'
+            ],
+            'plugins.tidyhtml.indent_spaces' => [
+                'type' => 'text',
+                'label' => 'Spaces to use for indents',
+                'size' => 'x-small',
+                'default' => 4,
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 1
+                ],
+                'name' => 'plugins.tidyhtml.indent_spaces'
+            ],
+            'plugins.tidyhtml.hide_comments' => [
+                'type' => 'toggle',
+                'label' => 'Hide HTML comments in rendered HTML',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.tidyhtml.hide_comments'
+            ],
+            'plugins.tidyhtml.tag_section' => [
+                'type' => 'section',
+                'title' => 'HTML tag configuration',
+                'underline' => false,
+                'name' => 'plugins.tidyhtml.tag_section'
+            ],
+            'plugins.tidyhtml.blocklevel_tags' => [
+                'type' => 'array',
+                'label' => 'New block-level tags',
+                'default' => [
+                    0 => 'article',
+                    1 => 'aside',
+                    2 => 'audio',
+                    3 => 'bdi',
+                    4 => 'canvas',
+                    5 => 'details',
+                    6 => 'dialog',
+                    7 => 'figcaption',
+                    8 => 'figure',
+                    9 => 'footer',
+                    10 => 'header',
+                    11 => 'hgroup',
+                    12 => 'main',
+                    13 => 'menu',
+                    14 => 'menuitem',
+                    15 => 'nav',
+                    16 => 'section',
+                    17 => 'source',
+                    18 => 'summary',
+                    19 => 'template',
+                    20 => 'track',
+                    21 => 'video'
+                ],
+                'size' => 'medium',
+                'value_only' => true,
+                'name' => 'plugins.tidyhtml.blocklevel_tags'
+            ],
+            'plugins.tidyhtml.inline_tags' => [
+                'type' => 'array',
+                'label' => 'New inline-level tags',
+                'default' => [
+                    0 => 'audio',
+                    1 => 'command',
+                    2 => 'datalist',
+                    3 => 'embed',
+                    4 => 'keygen',
+                    5 => 'mark',
+                    6 => 'menuitem',
+                    7 => 'meter',
+                    8 => 'output',
+                    9 => 'progress',
+                    10 => 'source',
+                    11 => 'time',
+                    12 => 'video',
+                    13 => 'wbr',
+                    14 => 'data'
+                ],
+                'size' => 'medium',
+                'value_only' => true,
+                'name' => 'plugins.tidyhtml.inline_tags'
+            ],
+            'plugins.tidyhtml.empty_tags' => [
+                'type' => 'array',
+                'label' => 'This option specifies new empty inline tags',
+                'default' => [
+                    0 => 'command',
+                    1 => 'embed',
+                    2 => 'keygen',
+                    3 => 'source',
+                    4 => 'track',
+                    5 => 'wbr'
+                ],
+                'size' => 'medium',
+                'value_only' => true,
+                'name' => 'plugins.tidyhtml.empty_tags'
+            ],
             'plugins.email' => [
                 'type' => '_parent',
                 'name' => 'plugins.email'
@@ -935,6 +1112,37 @@ return [
                     'type' => 'commalist'
                 ],
                 'name' => 'plugins.form.files.accept'
+            ],
+            'plugins.embed' => [
+                'type' => '_parent',
+                'name' => 'plugins.embed'
+            ],
+            'plugins.embed.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin status',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.embed.enabled'
+            ],
+            'plugins.embed.oembed' => [
+                'type' => '_parent',
+                'name' => 'plugins.embed.oembed'
+            ],
+            'plugins.embed.oembed.endoint' => [
+                'type' => 'text',
+                'label' => 'OEmbed Endpoint',
+                'placeholder' => 'http://open.iframe.ly/api/oembed',
+                'validate' => [
+                    'type' => 'url'
+                ],
+                'name' => 'plugins.embed.oembed.endoint'
             ],
             'plugins.aboutme' => [
                 'type' => '_parent',
@@ -1474,6 +1682,491 @@ return [
                     'type' => 'bool'
                 ],
                 'name' => 'plugins.assets.enabled'
+            ],
+            'plugins.textformatter' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter'
+            ],
+            'plugins.textformatter.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.PLUGIN_STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.enabled'
+            ],
+            'plugins.textformatter.process' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.PROCESS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.process'
+            ],
+            'plugins.textformatter.autoemail' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.autoemail'
+            ],
+            'plugins.textformatter.autoimage' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.autoimage'
+            ],
+            'plugins.textformatter.autolink' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.autolink'
+            ],
+            'plugins.textformatter.autolink.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.autolink.enabled'
+            ],
+            'plugins.textformatter.autolink.www' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.AUTOLINK.WWW',
+                'help' => 'PLUGINS.TEXTFORMATTER.AUTOLINK.WWW_HELP',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.autolink.www'
+            ],
+            'plugins.textformatter.autolink.schemes' => [
+                'type' => 'selectize',
+                'label' => 'PLUGINS.TEXTFORMATTER.AUTOLINK.SCHEMES',
+                'help' => 'PLUGINS.TEXTFORMATTER.AUTOLINK.SCHEMES_HELP',
+                'validate' => [
+                    'type' => 'commalist'
+                ],
+                'name' => 'plugins.textformatter.autolink.schemes'
+            ],
+            'plugins.textformatter.bbcodes' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.bbcodes'
+            ],
+            'plugins.textformatter.bbcodes.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.bbcodes.enabled'
+            ],
+            'plugins.textformatter.bbcodes.bbcodes' => [
+                'type' => 'selectize',
+                'label' => 'PLUGINS.TEXTFORMATTER.BBCODES.BBCODES',
+                'help' => 'PLUGINS.TEXTFORMATTER.BBCODES.BBCODES_HELP',
+                'validate' => [
+                    'type' => 'commalist'
+                ],
+                'name' => 'plugins.textformatter.bbcodes.bbcodes'
+            ],
+            'plugins.textformatter.bbcodes.custom' => [
+                'type' => 'array',
+                'label' => 'PLUGINS.TEXTFORMATTER.BBCODES.CUSTOM.LABEL',
+                'help' => 'PLUGINS.TEXTFORMATTER.BBCODES.CUSTOM.HELP',
+                'placeholder_key' => 'PLUGINS.TEXTFORMATTER.BBCODES.CUSTOM.PLACEHOLDER_KEY',
+                'placeholder_value' => 'PLUGINS.TEXTFORMATTER.BBCODES.CUSTOM.PLACEHOLDER_VALUE',
+                'validate' => [
+                    'type' => 'array'
+                ],
+                'name' => 'plugins.textformatter.bbcodes.custom'
+            ],
+            'plugins.textformatter.censor' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.censor'
+            ],
+            'plugins.textformatter.censor.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.censor.enabled'
+            ],
+            'plugins.textformatter.censor.words' => [
+                'type' => 'array',
+                'label' => 'PLUGINS.TEXTFORMATTER.CENSOR.WORDS.LABEL',
+                'help' => 'PLUGINS.TEXTFORMATTER.CENSOR.WORDS.HELP',
+                'placeholder_key' => 'PLUGINS.TEXTFORMATTER.CENSOR.WORDS.PLACEHOLDER_KEY',
+                'placeholder_value' => 'PLUGINS.TEXTFORMATTER.CENSOR.WORDS.PLACEHOLDER_VALUE',
+                'validate' => [
+                    'type' => 'array'
+                ],
+                'name' => 'plugins.textformatter.censor.words'
+            ],
+            'plugins.textformatter.emoji' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'label' => 'PLUGINS.TEXTFORMATTER.EMOJI.LABEL',
+                'default' => '',
+                'options' => [
+                    '' => 'PLUGINS.TEXTFORMATTER.EMOJI.DEFAULT',
+                    'twemoji' => 'PLUGINS.TEXTFORMATTER.EMOJI.TWEMOJI',
+                    'emojione' => 'PLUGINS.TEXTFORMATTER.EMOJI.EMOJIONE'
+                ],
+                'validate' => [
+                    'type' => 'string'
+                ],
+                'name' => 'plugins.textformatter.emoji'
+            ],
+            'plugins.textformatter.emoticons' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.emoticons'
+            ],
+            'plugins.textformatter.emoticons.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.emoticons.enabled'
+            ],
+            'plugins.textformatter.emoticons.path' => [
+                'type' => 'text',
+                'label' => 'PLUGINS.TEXTFORMATTER.EMOTICONS.PATH',
+                'help' => 'PLUGINS.TEXTFORMATTER.EMOTICONS.PATH_HELP',
+                'validate' => [
+                    'type' => 'string'
+                ],
+                'name' => 'plugins.textformatter.emoticons.path'
+            ],
+            'plugins.textformatter.emoticons.icons' => [
+                'type' => 'array',
+                'label' => 'PLUGINS.TEXTFORMATTER.EMOTICONS.LABEL',
+                'help' => 'PLUGINS.TEXTFORMATTER.EMOTICONS.HELP',
+                'placeholder_key' => 'PLUGINS.TEXTFORMATTER.EMOTICONS.PLACEHOLDER_KEY',
+                'placeholder_value' => 'PLUGINS.TEXTFORMATTER.EMOTICONS.PLACEHOLDER_VALUE',
+                'validate' => [
+                    'type' => 'array'
+                ],
+                'name' => 'plugins.textformatter.emoticons.icons'
+            ],
+            'plugins.textformatter.escaper' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.escaper'
+            ],
+            'plugins.textformatter.escaper.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.escaper.enabled'
+            ],
+            'plugins.textformatter.escaper.escape_all' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.ESCAPER.ESCAPE_ALL',
+                'help' => 'PLUGINS.TEXTFORMATTER.ESCAPER.ESCAPE_ALL_HELP',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.escaper.escape_all'
+            ],
+            'plugins.textformatter.escaper.regex' => [
+                'type' => 'text',
+                'size' => 'medium',
+                'label' => 'PLUGINS.TEXTFORMATTER.ESCAPER.REGEX',
+                'help' => 'PLUGINS.TEXTFORMATTER.ESCAPER.REGEX_HELP',
+                'validate' => [
+                    'type' => 'string'
+                ],
+                'name' => 'plugins.textformatter.escaper.regex'
+            ],
+            'plugins.textformatter.fancypants' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.fancypants'
+            ],
+            'plugins.textformatter.html' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.html'
+            ],
+            'plugins.textformatter.html.comments' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.HTML.COMMENTS',
+                'help' => 'PLUGINS.TEXTFORMATTER.HTML.COMMENTS_HELP',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.html.comments'
+            ],
+            'plugins.textformatter.html.entities' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.HTML.ENTITIES',
+                'help' => 'PLUGINS.TEXTFORMATTER.HTML.ENTITIES_HELP',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.html.entities'
+            ],
+            'plugins.textformatter.html.elements' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.html.elements'
+            ],
+            'plugins.textformatter.html.elements.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.html.elements.enabled'
+            ],
+            'plugins.textformatter.html.elements.allowed' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.html.elements.allowed'
+            ],
+            'plugins.textformatter.html.elements.allowed.safe' => [
+                'type' => 'array',
+                'label' => 'PLUGINS.TEXTFORMATTER.HTML_ELEMENTS.SAFE_LABEL',
+                'help' => 'PLUGINS.TEXTFORMATTER.HTML_ELEMENTS.SAFE_HELP',
+                'placeholder_key' => 'PLUGINS.TEXTFORMATTER.HTML_ELEMENTS.PLACEHOLDER_KEY',
+                'placeholder_value' => 'PLUGINS.TEXTFORMATTER.HTML_ELEMENTS.PLACEHOLDER_VALUE',
+                'validate' => [
+                    'type' => 'array'
+                ],
+                'name' => 'plugins.textformatter.html.elements.allowed.safe'
+            ],
+            'plugins.textformatter.html.elements.allowed.unsafe' => [
+                'type' => 'array',
+                'label' => 'PLUGINS.TEXTFORMATTER.HTML_ELEMENTS.UNSAFE_LABEL',
+                'help' => 'PLUGINS.TEXTFORMATTER.HTML_ELEMENTS.UNSAFE_HELP',
+                'placeholder_key' => 'PLUGINS.TEXTFORMATTER.HTML_ELEMENTS.PLACEHOLDER_KEY',
+                'placeholder_value' => 'PLUGINS.TEXTFORMATTER.HTML_ELEMENTS.PLACEHOLDER_VALUE',
+                'validate' => [
+                    'type' => 'array'
+                ],
+                'name' => 'plugins.textformatter.html.elements.allowed.unsafe'
+            ],
+            'plugins.textformatter.keywords' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.keywords'
+            ],
+            'plugins.textformatter.keywords.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.keywords.enabled'
+            ],
+            'plugins.textformatter.keywords.case_sensitive' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.KEYWORDS.CASE_SENSITIVE',
+                'help' => 'PLUGINS.TEXTFORMATTER.KEYWORDS.CASE_SENSITIVE_HELP',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.keywords.case_sensitive'
+            ],
+            'plugins.textformatter.keywords.template' => [
+                'type' => 'textarea',
+                'label' => 'PLUGINS.TEXTFORMATTER.KEYWORDS.TEMPLATE',
+                'help' => 'PLUGINS.TEXTFORMATTER.KEYWORDS.TEMPLATE_HELP',
+                'validate' => [
+                    'type' => 'string'
+                ],
+                'name' => 'plugins.textformatter.keywords.template'
+            ],
+            'plugins.textformatter.keywords.keywords' => [
+                'type' => 'selectize',
+                'label' => 'PLUGINS.TEXTFORMATTER.KEYWORDS.KEYWORDS.LABEL',
+                'help' => 'PLUGINS.TEXTFORMATTER.KEYWORDS.KEYWORDS.HELP',
+                'validate' => [
+                    'type' => 'commalist'
+                ],
+                'name' => 'plugins.textformatter.keywords.keywords'
+            ],
+            'plugins.textformatter.mediaembed' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.mediaembed'
+            ],
+            'plugins.textformatter.mediaembed.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.mediaembed.enabled'
+            ],
+            'plugins.textformatter.mediaembed.create_individiual_bbcodes' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.MEDIAEMBED.BBCODES',
+                'help' => 'PLUGINS.TEXTFORMATTER.MEDIAEMBED.BBCODES_HELP',
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.YES',
+                    0 => 'PLUGIN_ADMIN.NO'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.mediaembed.create_individiual_bbcodes'
+            ],
+            'plugins.textformatter.mediaembed.sites' => [
+                'type' => 'selectize',
+                'label' => 'PLUGINS.TEXTFORMATTER.MEDIAEMBED.SITES.LABEL',
+                'help' => 'PLUGINS.TEXTFORMATTER.MEDIAEMBED.SITES.HELP',
+                'validate' => [
+                    'type' => 'commalist'
+                ],
+                'name' => 'plugins.textformatter.mediaembed.sites'
+            ],
+            'plugins.textformatter.preg' => [
+                'type' => '_parent',
+                'name' => 'plugins.textformatter.preg'
+            ],
+            'plugins.textformatter.preg.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGINS.TEXTFORMATTER.STATUS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.textformatter.preg.enabled'
+            ],
+            'plugins.textformatter.preg.replace' => [
+                'type' => 'array',
+                'label' => 'PLUGINS.TEXTFORMATTER.PREG.REPLACE.LABEL',
+                'help' => 'PLUGINS.TEXTFORMATTER.PREG.REPLACE.HELP',
+                'placeholder_key' => 'PLUGINS.TEXTFORMATTER.PREG.REPLACE.PLACEHOLDER_KEY',
+                'placeholder_value' => 'PLUGINS.TEXTFORMATTER.PREG.REPLACE.PLACEHOLDER_VALUE',
+                'validate' => [
+                    'type' => 'array'
+                ],
+                'name' => 'plugins.textformatter.preg.replace'
+            ],
+            'plugins.textformatter.preg.match' => [
+                'type' => 'array',
+                'label' => 'PLUGINS.TEXTFORMATTER.PREG.MATCH.LABEL',
+                'help' => 'PLUGINS.TEXTFORMATTER.PREG.MATCH.HELP',
+                'placeholder_key' => 'PLUGINS.TEXTFORMATTER.PREG.MATCH.PLACEHOLDER_KEY',
+                'placeholder_value' => 'PLUGINS.TEXTFORMATTER.PREG.MATCH.PLACEHOLDER_VALUE',
+                'validate' => [
+                    'type' => 'array'
+                ],
+                'name' => 'plugins.textformatter.preg.match'
             ],
             'site' => [
                 'type' => '_parent',
@@ -2715,6 +3408,9 @@ return [
         ],
         'nested' => [
             'plugins' => [
+                'view' => [
+                    'template' => 'plugins.view.template'
+                ],
                 'admin' => [
                     'Basics' => 'plugins.admin.Basics',
                     'enabled' => 'plugins.admin.enabled',
@@ -2809,6 +3505,18 @@ return [
                         ]
                     ]
                 ],
+                'tidyhtml' => [
+                    'basic_section' => 'plugins.tidyhtml.basic_section',
+                    'enabled' => 'plugins.tidyhtml.enabled',
+                    'indent' => 'plugins.tidyhtml.indent',
+                    'wrap' => 'plugins.tidyhtml.wrap',
+                    'indent_spaces' => 'plugins.tidyhtml.indent_spaces',
+                    'hide_comments' => 'plugins.tidyhtml.hide_comments',
+                    'tag_section' => 'plugins.tidyhtml.tag_section',
+                    'blocklevel_tags' => 'plugins.tidyhtml.blocklevel_tags',
+                    'inline_tags' => 'plugins.tidyhtml.inline_tags',
+                    'empty_tags' => 'plugins.tidyhtml.empty_tags'
+                ],
                 'email' => [
                     'enabled' => 'plugins.email.enabled',
                     'mailer' => [
@@ -2842,6 +3550,12 @@ return [
                         'multiple' => 'plugins.form.files.multiple',
                         'destination' => 'plugins.form.files.destination',
                         'accept' => 'plugins.form.files.accept'
+                    ]
+                ],
+                'embed' => [
+                    'enabled' => 'plugins.embed.enabled',
+                    'oembed' => [
+                        'endoint' => 'plugins.embed.oembed.endoint'
                     ]
                 ],
                 'aboutme' => [
@@ -2916,6 +3630,65 @@ return [
                 ],
                 'assets' => [
                     'enabled' => 'plugins.assets.enabled'
+                ],
+                'textformatter' => [
+                    'enabled' => 'plugins.textformatter.enabled',
+                    'process' => 'plugins.textformatter.process',
+                    'autoemail' => 'plugins.textformatter.autoemail',
+                    'autoimage' => 'plugins.textformatter.autoimage',
+                    'autolink' => [
+                        'enabled' => 'plugins.textformatter.autolink.enabled',
+                        'www' => 'plugins.textformatter.autolink.www',
+                        'schemes' => 'plugins.textformatter.autolink.schemes'
+                    ],
+                    'bbcodes' => [
+                        'enabled' => 'plugins.textformatter.bbcodes.enabled',
+                        'bbcodes' => 'plugins.textformatter.bbcodes.bbcodes',
+                        'custom' => 'plugins.textformatter.bbcodes.custom'
+                    ],
+                    'censor' => [
+                        'enabled' => 'plugins.textformatter.censor.enabled',
+                        'words' => 'plugins.textformatter.censor.words'
+                    ],
+                    'emoji' => 'plugins.textformatter.emoji',
+                    'emoticons' => [
+                        'enabled' => 'plugins.textformatter.emoticons.enabled',
+                        'path' => 'plugins.textformatter.emoticons.path',
+                        'icons' => 'plugins.textformatter.emoticons.icons'
+                    ],
+                    'escaper' => [
+                        'enabled' => 'plugins.textformatter.escaper.enabled',
+                        'escape_all' => 'plugins.textformatter.escaper.escape_all',
+                        'regex' => 'plugins.textformatter.escaper.regex'
+                    ],
+                    'fancypants' => 'plugins.textformatter.fancypants',
+                    'html' => [
+                        'comments' => 'plugins.textformatter.html.comments',
+                        'entities' => 'plugins.textformatter.html.entities',
+                        'elements' => [
+                            'enabled' => 'plugins.textformatter.html.elements.enabled',
+                            'allowed' => [
+                                'safe' => 'plugins.textformatter.html.elements.allowed.safe',
+                                'unsafe' => 'plugins.textformatter.html.elements.allowed.unsafe'
+                            ]
+                        ]
+                    ],
+                    'keywords' => [
+                        'enabled' => 'plugins.textformatter.keywords.enabled',
+                        'case_sensitive' => 'plugins.textformatter.keywords.case_sensitive',
+                        'template' => 'plugins.textformatter.keywords.template',
+                        'keywords' => 'plugins.textformatter.keywords.keywords'
+                    ],
+                    'mediaembed' => [
+                        'enabled' => 'plugins.textformatter.mediaembed.enabled',
+                        'create_individiual_bbcodes' => 'plugins.textformatter.mediaembed.create_individiual_bbcodes',
+                        'sites' => 'plugins.textformatter.mediaembed.sites'
+                    ],
+                    'preg' => [
+                        'enabled' => 'plugins.textformatter.preg.enabled',
+                        'replace' => 'plugins.textformatter.preg.replace',
+                        'match' => 'plugins.textformatter.preg.match'
+                    ]
                 ]
             ],
             'site' => [
