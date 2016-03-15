@@ -1,0 +1,11 @@
+email: admin@thierryrenewebdev.com
+fullname: 'thierry rene matos'
+title: 'web developer front end'
+state: enabled
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$Y4E.yjSdsaQq1PRL1HFINOKKVwuFTJ.G/LgapogaP4l5F9sX6Fl12
