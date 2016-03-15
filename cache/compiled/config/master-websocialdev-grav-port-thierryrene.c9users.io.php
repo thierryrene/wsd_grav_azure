@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1458009787,
-    'checksum' => 'bae546c5c4e9ad5efc77b5e5943f4d14',
+    'timestamp' => 1458010406,
+    'checksum' => '8ad1883b832adfd531aafd63093b2f2c',
     'files' => [
         'user/config' => [
             'media' => [
@@ -23,7 +23,11 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1458009725
+                'modified' => 1458010406
+            ],
+            'themes/afterburner2' => [
+                'file' => 'user/config/themes/afterburner2.yaml',
+                'modified' => 1458010395
             ]
         ],
         'system/config' => [
@@ -65,9 +69,21 @@ return [
                 'file' => 'user/plugins/form/form.yaml',
                 'modified' => 1456413550
             ],
+            'plugins/aboutme' => [
+                'file' => 'user/plugins/aboutme/aboutme.yaml',
+                'modified' => 1458010341
+            ],
+            'plugins/shortcode-core' => [
+                'file' => 'user/plugins/shortcode-core/shortcode-core.yaml',
+                'modified' => 1458010358
+            ],
             'plugins/problems' => [
                 'file' => 'user/plugins/problems/problems.yaml',
                 'modified' => 1456413550
+            ],
+            'plugins/assets' => [
+                'file' => 'user/plugins/assets/assets.yaml',
+                'modified' => 1458010329
             ]
         ]
     ],
@@ -220,9 +236,68 @@ return [
                     ]
                 ]
             ],
+            'aboutme' => [
+                'enabled' => true,
+                'built_in_css' => true,
+                'name' => 'Santa Claus',
+                'title' => 'Present Giver',
+                'description' => 'Santa Claus, Saint Nicholas, Saint Nick, Father Christmas, Kris Kringle, Santy, or simply Santa is a figure with legendary, historical and folkloric origins who, in many Western cultures, is said to bring gifts to the homes of good children on 24 December, the night before Christmas Day. The modern figure of Santa Claus is derived from the British figure of Father Christmas, the Dutch figure of Sinterklaas, and Saint Nicholas, the historical Greek bishop and gift-giver of Myra. During the Christianization of Germanic Europe, this figure may also have absorbed elements of the god Odin, who was associated with the Germanic pagan midwinter event of Yule and led the Wild Hunt, a ghostly procession through the sky',
+                'picture_src' => 'user/plugins/aboutme/assets/avatars/santa.jpg',
+                'gravatar' => [
+                    'enabled' => false,
+                    'email' => 'example@test.com',
+                    'size' => 100
+                ],
+                'social_pages' => [
+                    'enabled' => true,
+                    'use_font_awesome' => false,
+                    'pages' => [
+                        'facebook' => [
+                            'icon' => 'facebook-official',
+                            'title' => 'Facebook',
+                            'position' => 1
+                        ],
+                        'twitter' => [
+                            'icon' => 'twitter',
+                            'title' => 'Twitter',
+                            'position' => 2
+                        ],
+                        'google_plus' => [
+                            'icon' => 'google-plus-square',
+                            'title' => 'Google+',
+                            'position' => 3
+                        ],
+                        'github' => [
+                            'icon' => 'github',
+                            'title' => 'GitHub',
+                            'position' => 4
+                        ],
+                        'linkedin' => [
+                            'icon' => 'linkedin-square',
+                            'title' => 'LinkedIn',
+                            'position' => 5
+                        ],
+                        'instagram' => [
+                            'icon' => 'instagram',
+                            'title' => 'Instagram',
+                            'position' => 6
+                        ]
+                    ]
+                ]
+            ],
+            'shortcode-core' => [
+                'enabled' => true,
+                'active' => true,
+                'active_admin' => true,
+                'parser' => 'wordpress',
+                'load_fontawesome' => false
+            ],
             'problems' => [
                 'enabled' => true,
                 'built_in_css' => true
+            ],
+            'assets' => [
+                'enabled' => true
             ]
         ],
         'media' => [
@@ -539,7 +614,7 @@ return [
                 'hide_in_urls' => false
             ],
             'pages' => [
-                'theme' => 'antimatter',
+                'theme' => 'afterburner2',
                 'order' => [
                     'by' => 'default',
                     'dir' => 'asc'
@@ -668,6 +743,13 @@ return [
         ],
         'security' => [
             'salt' => 'cdGCrpOUnkt7sv'
+        ],
+        'themes' => [
+            'afterburner2' => [
+                'dropdown' => [
+                    'enabled' => false
+                ]
+            ]
         ]
     ]
 ];

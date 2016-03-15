@@ -1,11 +1,12 @@
-email: admin@thierryrenewebdev.com
+email: td_matos@msn.com
 fullname: 'thierry rene matos'
 title: 'web developer front end'
 state: enabled
 access:
   admin:
-    login: true
-    super: true
+    login: 'true'
+    super: 'true'
   site:
-    login: true
+    login: 'true'
 hashed_password: $2y$10$Y4E.yjSdsaQq1PRL1HFINOKKVwuFTJ.G/LgapogaP4l5F9sX6Fl12
+language: en

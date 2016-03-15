@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1458009737,
-    'checksum' => '364be2172dca3c1768a10a471d4606ab',
+    'timestamp' => 1458010358,
+    'checksum' => 'bb6b27fd48f1ecd83be86b65b38457b1',
     'files' => [
         'system/blueprints/config' => [
             'media' => [
@@ -43,9 +43,21 @@ return [
                 'file' => 'user/plugins/form/blueprints.yaml',
                 'modified' => 1456413550
             ],
+            'plugins/aboutme' => [
+                'file' => 'user/plugins/aboutme/blueprints.yaml',
+                'modified' => 1458010341
+            ],
+            'plugins/shortcode-core' => [
+                'file' => 'user/plugins/shortcode-core/blueprints.yaml',
+                'modified' => 1458010358
+            ],
             'plugins/problems' => [
                 'file' => 'user/plugins/problems/blueprints.yaml',
                 'modified' => 1456413550
+            ],
+            'plugins/assets' => [
+                'file' => 'user/plugins/assets/blueprints.yaml',
+                'modified' => 1458010329
             ]
         ]
     ],
@@ -924,6 +936,495 @@ return [
                 ],
                 'name' => 'plugins.form.files.accept'
             ],
+            'plugins.aboutme' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme'
+            ],
+            'plugins.aboutme.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin status',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.aboutme.enabled'
+            ],
+            'plugins.aboutme.built_in_css' => [
+                'type' => 'toggle',
+                'label' => 'Use Built in CSS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.aboutme.built_in_css'
+            ],
+            'plugins.aboutme.name' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'Name',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.name'
+            ],
+            'plugins.aboutme.title' => [
+                'type' => 'text',
+                'label' => 'Title',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.title'
+            ],
+            'plugins.aboutme.description' => [
+                'type' => 'textarea',
+                'label' => 'Description',
+                'rows' => 10,
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.description'
+            ],
+            'plugins.aboutme.Profile Picture' => [
+                'type' => 'section',
+                'title' => 'Profile Picture',
+                'underline' => true,
+                'name' => 'plugins.aboutme.Profile Picture'
+            ],
+            'plugins.aboutme.picture_src' => [
+                'type' => 'file',
+                'label' => 'Picture file',
+                'multiple' => false,
+                'destination' => 'user/plugins/aboutme/assets/avatars',
+                'showuploaded' => true,
+                'showuploadedpreview' => true,
+                'ispluginconfig' => true,
+                'pluginname' => 'aboutme',
+                'accept' => [
+                    0 => 'image/*'
+                ],
+                'name' => 'plugins.aboutme.picture_src'
+            ],
+            'plugins.aboutme.Gravatar' => [
+                'type' => 'section',
+                'title' => 'Gravatar',
+                'underline' => true,
+                'name' => 'plugins.aboutme.Gravatar'
+            ],
+            'plugins.aboutme.gravatar' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme.gravatar'
+            ],
+            'plugins.aboutme.gravatar.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Gravatar status',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.aboutme.gravatar.enabled'
+            ],
+            'plugins.aboutme.gravatar.email' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'Email',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.gravatar.email'
+            ],
+            'plugins.aboutme.gravatar.size' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'Size (min 50)',
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 50
+                ],
+                'name' => 'plugins.aboutme.gravatar.size'
+            ],
+            'plugins.aboutme.Social Pages' => [
+                'type' => 'section',
+                'title' => 'Social Pages',
+                'underline' => true,
+                'name' => 'plugins.aboutme.Social Pages'
+            ],
+            'plugins.aboutme.social_pages' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme.social_pages'
+            ],
+            'plugins.aboutme.social_pages.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Social pages status',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.aboutme.social_pages.enabled'
+            ],
+            'plugins.aboutme.social_pages.use_font_awesome' => [
+                'type' => 'toggle',
+                'label' => 'Use Font Awesome (Only if your theme does not use it already)',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.aboutme.social_pages.use_font_awesome'
+            ],
+            'plugins.aboutme.Social Pages Types' => [
+                'type' => 'section',
+                'title' => '&nbsp;',
+                'name' => 'plugins.aboutme.Social Pages Types'
+            ],
+            'plugins.aboutme.social_pages.pages' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme.social_pages.pages'
+            ],
+            'plugins.aboutme.social_pages.pages.facebook' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme.social_pages.pages.facebook'
+            ],
+            'plugins.aboutme.social_pages.pages.facebook.icon' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'Font Awesome Icon',
+                'default' => 'facebook',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.facebook.icon'
+            ],
+            'plugins.aboutme.social_pages.pages.facebook.url' => [
+                'type' => 'url',
+                'label' => 'Your Facebook Profile URL',
+                'validate' => [
+                    'type' => 'url'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.facebook.url'
+            ],
+            'plugins.aboutme.social_pages.pages.facebook.title' => [
+                'type' => 'text',
+                'label' => 'Title when icon hovered (optional)',
+                'default' => 'Facebook',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.facebook.title'
+            ],
+            'plugins.aboutme.social_pages.pages.facebook.position' => [
+                'type' => 'text',
+                'size' => 'x-small',
+                'label' => 'Position',
+                'default' => 1,
+                'validate' => [
+                    'type' => 'Number'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.facebook.position'
+            ],
+            'plugins.aboutme.social_pages.pages.twitter' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme.social_pages.pages.twitter'
+            ],
+            'plugins.aboutme.social_pages.pages.twitter.icon' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'Font Awesome Icon',
+                'default' => 'twitter',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.twitter.icon'
+            ],
+            'plugins.aboutme.social_pages.pages.twitter.url' => [
+                'type' => 'url',
+                'label' => 'Your Twitter Profile URL',
+                'validate' => [
+                    'type' => 'url'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.twitter.url'
+            ],
+            'plugins.aboutme.social_pages.pages.twitter.title' => [
+                'type' => 'text',
+                'label' => 'Title when icon hovered (optional)',
+                'default' => 'Twitter',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.twitter.title'
+            ],
+            'plugins.aboutme.social_pages.pages.twitter.position' => [
+                'type' => 'text',
+                'size' => 'x-small',
+                'label' => 'Position',
+                'default' => 1,
+                'validate' => [
+                    'type' => 'Number'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.twitter.position'
+            ],
+            'plugins.aboutme.social_pages.pages.google_plus' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme.social_pages.pages.google_plus'
+            ],
+            'plugins.aboutme.social_pages.pages.google_plus.icon' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'Font Awesome Icon',
+                'default' => 'google-plus',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.google_plus.icon'
+            ],
+            'plugins.aboutme.social_pages.pages.google_plus.url' => [
+                'type' => 'url',
+                'label' => 'Your Google+ Profile URL',
+                'validate' => [
+                    'type' => 'url'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.google_plus.url'
+            ],
+            'plugins.aboutme.social_pages.pages.google_plus.title' => [
+                'type' => 'text',
+                'label' => 'Title when icon hovered (optional)',
+                'default' => 'Google+',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.google_plus.title'
+            ],
+            'plugins.aboutme.social_pages.pages.google_plus.position' => [
+                'type' => 'text',
+                'size' => 'x-small',
+                'label' => 'Position',
+                'default' => 1,
+                'validate' => [
+                    'type' => 'Number'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.google_plus.position'
+            ],
+            'plugins.aboutme.social_pages.pages.github' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme.social_pages.pages.github'
+            ],
+            'plugins.aboutme.social_pages.pages.github.icon' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'Font Awesome Icon',
+                'default' => 'github',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.github.icon'
+            ],
+            'plugins.aboutme.social_pages.pages.github.url' => [
+                'type' => 'url',
+                'label' => 'Your GitHub Profile URL',
+                'validate' => [
+                    'type' => 'url'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.github.url'
+            ],
+            'plugins.aboutme.social_pages.pages.github.title' => [
+                'type' => 'text',
+                'label' => 'Title when icon hovered (optional)',
+                'default' => 'GitHub',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.github.title'
+            ],
+            'plugins.aboutme.social_pages.pages.github.position' => [
+                'type' => 'text',
+                'size' => 'x-small',
+                'label' => 'Position',
+                'default' => 1,
+                'validate' => [
+                    'type' => 'Number'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.github.position'
+            ],
+            'plugins.aboutme.social_pages.pages.linkedin' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme.social_pages.pages.linkedin'
+            ],
+            'plugins.aboutme.social_pages.pages.linkedin.icon' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'Font Awesome Icon',
+                'default' => 'linkedin',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.linkedin.icon'
+            ],
+            'plugins.aboutme.social_pages.pages.linkedin.url' => [
+                'type' => 'url',
+                'label' => 'Your LinkedIn Profile URL',
+                'validate' => [
+                    'type' => 'url'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.linkedin.url'
+            ],
+            'plugins.aboutme.social_pages.pages.linkedin.title' => [
+                'type' => 'text',
+                'label' => 'Title when icon hovered (optional)',
+                'default' => 'LinkedIn',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.linkedin.title'
+            ],
+            'plugins.aboutme.social_pages.pages.linkedin.position' => [
+                'type' => 'text',
+                'size' => 'x-small',
+                'label' => 'Position',
+                'default' => 1,
+                'validate' => [
+                    'type' => 'Number'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.linkedin.position'
+            ],
+            'plugins.aboutme.social_pages.pages.instagram' => [
+                'type' => '_parent',
+                'name' => 'plugins.aboutme.social_pages.pages.instagram'
+            ],
+            'plugins.aboutme.social_pages.pages.instagram.icon' => [
+                'type' => 'text',
+                'size' => 'small',
+                'label' => 'Font Awesome Icon',
+                'default' => 'instagram',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.instagram.icon'
+            ],
+            'plugins.aboutme.social_pages.pages.instagram.url' => [
+                'type' => 'url',
+                'label' => 'Your Instagram Profile URL',
+                'validate' => [
+                    'type' => 'url'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.instagram.url'
+            ],
+            'plugins.aboutme.social_pages.pages.instagram.title' => [
+                'type' => 'text',
+                'label' => 'Title when icon hovered (optional)',
+                'default' => 'Instagram',
+                'validate' => [
+                    'type' => 'text'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.instagram.title'
+            ],
+            'plugins.aboutme.social_pages.pages.instagram.position' => [
+                'type' => 'text',
+                'size' => 'x-small',
+                'label' => 'Position',
+                'default' => 1,
+                'validate' => [
+                    'type' => 'Number'
+                ],
+                'name' => 'plugins.aboutme.social_pages.pages.instagram.position'
+            ],
+            'plugins.shortcode-core' => [
+                'type' => '_parent',
+                'name' => 'plugins.shortcode-core'
+            ],
+            'plugins.shortcode-core.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin Enabled',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.enabled'
+            ],
+            'plugins.shortcode-core.active' => [
+                'type' => 'toggle',
+                'label' => 'Activated',
+                'help' => 'Site-Wide activation',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.active'
+            ],
+            'plugins.shortcode-core.active_admin' => [
+                'type' => 'toggle',
+                'label' => 'Activated in admin',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.active_admin'
+            ],
+            'plugins.shortcode-core.parser' => [
+                'type' => 'select',
+                'size' => 'medium',
+                'classes' => 'fancy',
+                'label' => 'Processor',
+                'help' => 'Which built-in processor to use. WordPress (fastest), Regular (customizable), Regex (solid)',
+                'options' => [
+                    'wordpress' => 'WordpressParser',
+                    'regex' => 'RegexParser',
+                    'regular' => 'RegularParser'
+                ],
+                'name' => 'plugins.shortcode-core.parser'
+            ],
+            'plugins.shortcode-core.load_fontawesome' => [
+                'type' => 'toggle',
+                'label' => 'Load Fontawesome Library',
+                'help' => 'Used by the `safe-email` shortcode if your theme doesn\'t already load it',
+                'highlight' => 0,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.shortcode-core.load_fontawesome'
+            ],
             'plugins.problems' => [
                 'type' => '_parent',
                 'name' => 'plugins.problems'
@@ -955,6 +1456,24 @@ return [
                     'type' => 'bool'
                 ],
                 'name' => 'plugins.problems.built_in_css'
+            ],
+            'plugins.assets' => [
+                'type' => '_parent',
+                'name' => 'plugins.assets'
+            ],
+            'plugins.assets.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin status',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.assets.enabled'
             ],
             'site' => [
                 'type' => '_parent',
@@ -2325,9 +2844,78 @@ return [
                         'accept' => 'plugins.form.files.accept'
                     ]
                 ],
+                'aboutme' => [
+                    'enabled' => 'plugins.aboutme.enabled',
+                    'built_in_css' => 'plugins.aboutme.built_in_css',
+                    'name' => 'plugins.aboutme.name',
+                    'title' => 'plugins.aboutme.title',
+                    'description' => 'plugins.aboutme.description',
+                    'Profile Picture' => 'plugins.aboutme.Profile Picture',
+                    'picture_src' => 'plugins.aboutme.picture_src',
+                    'Gravatar' => 'plugins.aboutme.Gravatar',
+                    'gravatar' => [
+                        'enabled' => 'plugins.aboutme.gravatar.enabled',
+                        'email' => 'plugins.aboutme.gravatar.email',
+                        'size' => 'plugins.aboutme.gravatar.size'
+                    ],
+                    'Social Pages' => 'plugins.aboutme.Social Pages',
+                    'social_pages' => [
+                        'enabled' => 'plugins.aboutme.social_pages.enabled',
+                        'use_font_awesome' => 'plugins.aboutme.social_pages.use_font_awesome',
+                        'pages' => [
+                            'facebook' => [
+                                'icon' => 'plugins.aboutme.social_pages.pages.facebook.icon',
+                                'url' => 'plugins.aboutme.social_pages.pages.facebook.url',
+                                'title' => 'plugins.aboutme.social_pages.pages.facebook.title',
+                                'position' => 'plugins.aboutme.social_pages.pages.facebook.position'
+                            ],
+                            'twitter' => [
+                                'icon' => 'plugins.aboutme.social_pages.pages.twitter.icon',
+                                'url' => 'plugins.aboutme.social_pages.pages.twitter.url',
+                                'title' => 'plugins.aboutme.social_pages.pages.twitter.title',
+                                'position' => 'plugins.aboutme.social_pages.pages.twitter.position'
+                            ],
+                            'google_plus' => [
+                                'icon' => 'plugins.aboutme.social_pages.pages.google_plus.icon',
+                                'url' => 'plugins.aboutme.social_pages.pages.google_plus.url',
+                                'title' => 'plugins.aboutme.social_pages.pages.google_plus.title',
+                                'position' => 'plugins.aboutme.social_pages.pages.google_plus.position'
+                            ],
+                            'github' => [
+                                'icon' => 'plugins.aboutme.social_pages.pages.github.icon',
+                                'url' => 'plugins.aboutme.social_pages.pages.github.url',
+                                'title' => 'plugins.aboutme.social_pages.pages.github.title',
+                                'position' => 'plugins.aboutme.social_pages.pages.github.position'
+                            ],
+                            'linkedin' => [
+                                'icon' => 'plugins.aboutme.social_pages.pages.linkedin.icon',
+                                'url' => 'plugins.aboutme.social_pages.pages.linkedin.url',
+                                'title' => 'plugins.aboutme.social_pages.pages.linkedin.title',
+                                'position' => 'plugins.aboutme.social_pages.pages.linkedin.position'
+                            ],
+                            'instagram' => [
+                                'icon' => 'plugins.aboutme.social_pages.pages.instagram.icon',
+                                'url' => 'plugins.aboutme.social_pages.pages.instagram.url',
+                                'title' => 'plugins.aboutme.social_pages.pages.instagram.title',
+                                'position' => 'plugins.aboutme.social_pages.pages.instagram.position'
+                            ]
+                        ]
+                    ],
+                    'Social Pages Types' => 'plugins.aboutme.Social Pages Types'
+                ],
+                'shortcode-core' => [
+                    'enabled' => 'plugins.shortcode-core.enabled',
+                    'active' => 'plugins.shortcode-core.active',
+                    'active_admin' => 'plugins.shortcode-core.active_admin',
+                    'parser' => 'plugins.shortcode-core.parser',
+                    'load_fontawesome' => 'plugins.shortcode-core.load_fontawesome'
+                ],
                 'problems' => [
                     'enabled' => 'plugins.problems.enabled',
                     'built_in_css' => 'plugins.problems.built_in_css'
+                ],
+                'assets' => [
+                    'enabled' => 'plugins.assets.enabled'
                 ]
             ],
             'site' => [
