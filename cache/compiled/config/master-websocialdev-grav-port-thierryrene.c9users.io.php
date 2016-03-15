@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1458010406,
-    'checksum' => '8ad1883b832adfd531aafd63093b2f2c',
+    'timestamp' => 1458011577,
+    'checksum' => 'c1e42d0ff9e211e0448dab05e8c516a9',
     'files' => [
         'user/config' => [
             'media' => [
@@ -23,7 +23,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1458010406
+                'modified' => 1458011577
             ],
             'themes/afterburner2' => [
                 'file' => 'user/config/themes/afterburner2.yaml',
@@ -662,7 +662,7 @@ return [
                 'etag' => false,
                 'vary_accept_encoding' => false,
                 'redirect_default_route' => false,
-                'redirect_default_code' => 301,
+                'redirect_default_code' => '301',
                 'redirect_trailing_slash' => true,
                 'ignore_files' => [
                     0 => '.DS_Store'
@@ -676,7 +676,7 @@ return [
                 'markdown_extra' => false
             ],
             'cache' => [
-                'enabled' => true,
+                'enabled' => false,
                 'check' => [
                     'method' => 'file'
                 ],
